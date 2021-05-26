@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: headerFragment">
+
+</head>
+<body>
+	<div class="container my-2">
+		<div th:replace="fragments/header :: header"></div>
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="text-center">
+					<i class="fas fa-caret-right"></i>Register to reserve
+				</h1>
+			</div>
+		</div>
+	<form th:action="@{/booking/save}" th:object="${booking}" method="POST"> 
+			<div class="row">
+				<div class="ml-auto mr-3 form-check">
+					<input class="form-check-input" type="checkbox" th:field="*{agree}"
+						id="flexCheckDefault" th:value="agree"> <label class="form-check-label"
+						for="flexCheckDefault">I have read and agree to the above
+						content</label>
+				</div>
+			</div>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th colspan="2" scope="row">Name of rental facility</th>
+						<td>Mark</td>
+					</tr>
+					<tr>
+						<th rowspan="5">Registrants</th>
+						<th scope="row">Name</th>
+						<td>
+							<div class="col">
+									<input type="text" class="form-control" id="" th:field="*{name}">
+								</div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Phone</th>
+						<td>
+							<div class="form-row">
+								<div class="col">
+									<select class="form-control" id="sel1" th:field="*{phoneSub}">
+										<option th:value="${'+84'}">+84</option>
+										<option th:value="${'+85'}">+85</option>
+										<option th:value="${'+85'}">+86</option>
+										<option th:value="${'+87'}">+87</option>
+									</select>
+								</div>
+								<div class="col">
+									<input type="text" class="form-control" id="" th:field="*{phone}">
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Moblie</th>
+						<td>
+							<div class="form-row">
+								<div class="col">
+									<select class="form-control" id="sel1" th:field="*{mobileSub}">
+										<option th:value="036">036</option>
+										<option th:value="052">052</option>
+										<option th:value="014">014</option>
+										<option th:value="085">085</option>
+									</select>
+								</div>
+								<div class="col">
+									<input type="text" class="form-control" id="" th:field="*{mobile}">
+								</div>
+								<div class="col">
+									<div class="form-check mb-2">
+										<input class="form-check-input" type="checkbox" th:value="sms" th:field="*{sms}"
+											id="autoSizingCheck"> <label class="form-check-label"
+											for="autoSizingCheck">Agree to send SMS</label>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Email</th>
+						<td>
+							<div class="form-row">
+								<div class="col">
+									<input type="text" class="form-control" id="" th:field="*{email}">
+								</div>
+								<div class="col">
+									<select class="form-control" id="sel1" th:field="*{emailSub}">
+										<option th:value="${'@gmail.com'}">@gmail.com</option>
+										<option th:value="${'@fpt.edu.vn'}">@fpt.edu.vn</option>
+										<option th:value="${'@fsoft.com.vn'}">@fsoft.com.vn</option>
+										<option th:value="${'@yahoo.com'}">@yahoo.com</option>
+									</select>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Address</th>
+						<td>
+							<div class="form-row">
+								<div class="col">
+									<input type="text" class="form-control" id="" th:field="*{address}">
+								</div>
+								<button type="submit" class="btn btn-primary mb-2">Search</button>
+								<div class="col">
+									<input type="text" class="form-control" id="">
+								</div>
+								<div class="col">
+									<input type="text" class="form-control" id="">
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th rowspan="5">Booking information</th>
+						<th scope="row">Rental start date</th>
+						<td>
+							<div class="form-group">
+								<div class='input-group date' id='datetimepicker1'>
+									<input type='text' class="form-control" th:field="*{dateStart}"/> <span
+										class="input-group-addon"> <span
+										class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Rental end date</th>
+						<td>
+							<div class="form-group">
+								<div class='input-group date' id='datetimepicker2'>
+									<input type='text' class="form-control" th:field="*{dateEnd}"/> 
+									<span class="input-group-addon"> <span
+										class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Booking time</th>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">Number of participants</th>
+						<td><div class="form-row">
+								<div class="col-2">
+									<input type="text" class="form-control" id="" th:field="*{person}">
+								</div>
+								Persons
+							</div></td>
+					</tr>
+					<tr>
+						<th scope="row">Usage content</th>
+						<td>
+							<div class="form-row">
+								<div class="col">
+									<input type="text" class="form-control" id="" th:field="*{content}">
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="row">
+				<div class="ml-auto mr-3">
+					<a th:href="@{/register}" class="btn btn-danger"><i
+						class="fas fa-user-plus"> Cancel</i></a> <input type="Submit"
+						value="Booking" class="btn btn-success">
+				</div>
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript">
+        $(function() {
+		  $('#datetimepicker1').datetimepicker();
+		  $('#datetimepicker2').datetimepicker();
+		});
+      </script>
+</body>
+</html>
